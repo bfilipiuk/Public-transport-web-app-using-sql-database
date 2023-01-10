@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Warszawska Baza Komunikacji Miejskiej</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Home</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Main
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="col-md-10 mt-5">
+        <a href="/new_stop">Dodaj nowy przystanek</a>
+
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>Lokalizacja X</th>
+                <th>Lokalizacja Y</th>
+                <th>Rodzaj przystanku</th>
+                <th>ID bazy</th>
+                <th>Operacja</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="przystanek : ${listPrzystanek}">
+                <td th:text="${przystanek.idPrzystanku}">ID</td>
+                <td th:text="${przystanek.nazwa}">Nazwa</td>
+                <td th:text="${przystanek.lokalizacjaX}">Lokalizacja X</td>
+                <td th:text="${przystanek.lokalizacjaY}">Lokalizacja Y</td>
+                <td th:text="${przystanek.rodzajPrzystanku}">Rodzaj przystanku</td>
+                <td th:text="${przystanek.idBazy}">ID bazy</td>
+                <td>
+                    <a th:href="@{'/edit_stop/' + ${przystanek.idPrzystanku}}">Edytuj</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete_stop/' + ${przystanek.idPrzystanku}}">Usuń</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
