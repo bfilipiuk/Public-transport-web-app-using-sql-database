@@ -113,14 +113,14 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping(value={"/new"})
-        public String showEmpForm(Model model) {
+        public String showNewEmpPage(Model model) {
             Pracownik pracownik = new Pracownik();
             model.addAttribute("pracownik", pracownik);
             return "admin/new_form";
         }
 
         @RequestMapping(value = "/new_stop")
-        public String showNewStopForm(Model model) {
+        public String showNewStopPage(Model model) {
             Przystanek przystanek = new Przystanek();
             model.addAttribute("przystanek", przystanek);
 
@@ -128,7 +128,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping(value = "/new_route")
-        public String showNewRouteForm(Model model) {
+        public String showNewRoutePage(Model model) {
             Linia linia = new Linia();
             model.addAttribute("linia", linia);
 
@@ -144,7 +144,7 @@ public class AppController implements WebMvcConfigurer {
 //        }
 
         @RequestMapping(value = "/inspect_route/{idLinii}/new_stop_on_route")
-        public ModelAndView showNewStopOnRouteForm(Model model, @PathVariable(name = "idLinii") int id) {
+        public ModelAndView showNewStopOnRoutePage(Model model, @PathVariable(name = "idLinii") int id) {
             ModelAndView mav = new ModelAndView("admin/new_stop_on_route_form");
             List<Przystanek> listPrzystanek = daoPrzystanek.list();
             model.addAttribute("listPrzystanek", listPrzystanek);
@@ -159,7 +159,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping(value="/inspect_route/{idLinii}/save_przystanek_na_linii", method = RequestMethod.POST)
-        public String savePrzystankiNaLinii(@PathVariable(name = "idLinii") int idLinii, @RequestParam(name = "idPrzystanku") int idPrzystanku) {
+        public String saveStopOnRoute(@PathVariable(name = "idLinii") int idLinii, @RequestParam(name = "idPrzystanku") int idPrzystanku) {
             System.out.println("idLinii: " + idLinii);
             System.out.println("idPrzystanku" + idPrzystanku);
 
@@ -171,7 +171,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping(value="/save", method = RequestMethod.POST)
-        public String save(@ModelAttribute("pracownik") Pracownik pracownik) {
+        public String saveEmp(@ModelAttribute("pracownik") Pracownik pracownik) {
             dao.save(pracownik);
 
             return "redirect:/emp_management";
@@ -183,7 +183,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping(value="/savePrzystanek", method = RequestMethod.POST)
-        public String save(@ModelAttribute("przystanek") Przystanek przystanek) {
+        public String saveStop(@ModelAttribute("przystanek") Przystanek przystanek) {
             daoPrzystanek.savePrzystanek(przystanek);
 
             return "redirect:/stops_list";
@@ -203,7 +203,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping("/edit/{idPracownika}")
-        public ModelAndView showEditForm(@PathVariable(name = "idPracownika") int id) {
+        public ModelAndView showEditEmpPage(@PathVariable(name = "idPracownika") int id) {
             ModelAndView mav = new ModelAndView("admin/edit_form");
             Pracownik pracownik = dao.get(id);
             mav.addObject("pracownik", pracownik);
@@ -212,7 +212,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping("/edit_user_data/{idKlienta}")
-        public ModelAndView showEditUserDataForm(@PathVariable(name = "idKlienta") int id) {
+        public ModelAndView showEditUserDataPage(@PathVariable(name = "idKlienta") int id) {
             ModelAndView mav = new ModelAndView("user/edit_user_data_form");
 
             Klient klient = daoKlient.get(id);
@@ -222,7 +222,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping("/edit_stop/{idPrzystanku}")
-        public ModelAndView showEditStopForm(@PathVariable(name = "idPrzystanku") int id) {
+        public ModelAndView showEditStopPage(@PathVariable(name = "idPrzystanku") int id) {
             ModelAndView mav = new ModelAndView("admin/edit_stop_form");
             Przystanek przystanek = daoPrzystanek.get(id);
             mav.addObject("przystanek", przystanek);
@@ -231,7 +231,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping("/edit_route/{idLinii}")
-        public ModelAndView showEditRouteForm(@PathVariable(name = "idLinii") int id) {
+        public ModelAndView showEditRoutePage(@PathVariable(name = "idLinii") int id) {
             ModelAndView mav = new ModelAndView("admin/edit_route_form");
             Linia linia = daoLinia.get(id);
             mav.addObject("linia", linia);
@@ -240,7 +240,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping("/inspect_route/{idLinii}")
-        public ModelAndView showInspectRouteForm(Model model, @PathVariable(name = "idLinii") int id) {
+        public ModelAndView showInspectRoutePage(Model model, @PathVariable(name = "idLinii") int id) {
             ModelAndView mav = new ModelAndView("admin/inspect_route");
             Linia linia = daoLinia.get(id);
             mav.addObject("linia", linia);
@@ -252,7 +252,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping("/inspect_route_user/{idLinii}")
-        public ModelAndView showInspectRouteUserForm(Model model, @PathVariable(name = "idLinii") int id) {
+        public ModelAndView showInspectRouteUserPage(Model model, @PathVariable(name = "idLinii") int id) {
             ModelAndView mav = new ModelAndView("user/inspect_route_user");
             Linia linia = daoLinia.get(id);
             mav.addObject("linia", linia);
@@ -264,7 +264,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping("/choose_route_type/{rodzajLinii}")
-        public String showRoutesType(Model model, @PathVariable (name = "rodzajLinii") char rodzajLinii) {
+        public String showRoutesTypePage(Model model, @PathVariable (name = "rodzajLinii") char rodzajLinii) {
             List<Linia> listLiniaType = daoLinia.listType(rodzajLinii);
             model.addAttribute("listLiniaType", listLiniaType);
 
@@ -272,21 +272,21 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping(value="/update", method = RequestMethod.POST)
-        public String update(@ModelAttribute("pracownik") Pracownik pracownik) {
+        public String updateEmp(@ModelAttribute("pracownik") Pracownik pracownik) {
             dao.update(pracownik);
 
             return "redirect:/emp_management";
         }
 
         @RequestMapping(value="/update_stop", method = RequestMethod.POST)
-        public String update(@ModelAttribute("przystanek") Przystanek przystanek) {
+        public String updateStop(@ModelAttribute("przystanek") Przystanek przystanek) {
             daoPrzystanek.update(przystanek);
 
             return "redirect:/stops_list";
         }
 
         @RequestMapping(value="/update_route", method = RequestMethod.POST)
-        public String update(@ModelAttribute("linia") Linia linia) {
+        public String updateRoute(@ModelAttribute("linia") Linia linia) {
             daoLinia.update(linia);
 
             return "redirect:/routes_list";
@@ -302,7 +302,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping("/delete/{idPracownika}")
-        public String delete(@PathVariable(name = "idPracownika") int id) {
+        public String deleteEmp(@PathVariable(name = "idPracownika") int id) {
             dao.delete(id);
 
             return "redirect:/emp_management";
@@ -323,7 +323,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping("/inspect_route/{idLinii}/delete_stop_from_route/{idPrzystanku}")
-        public String deleteStopFromROute(@PathVariable(name = "idPrzystanku") int idPrzystanku, @PathVariable(name = "idLinii") int idLinii) {
+        public String deleteStopFromRoute(@PathVariable(name = "idPrzystanku") int idPrzystanku, @PathVariable(name = "idLinii") int idLinii) {
             daoPrzystankiNaLinii.deletePrzystanekNaLinii(idPrzystanku);
             String idLiniiString = Integer.toString(idLinii);
             return "redirect:/inspect_route/" + idLiniiString;

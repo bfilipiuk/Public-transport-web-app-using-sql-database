@@ -39,7 +39,7 @@ public class LiniaDAO {
         insertActor.withTableName("linie").usingColumns("czy_aktywna, rodzaj_linii, id_bazy");
 
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(linia);
-        insertActor.execute(param);
+//        insertActor.execute(param);
     }
 
     public Linia get(int id) {
