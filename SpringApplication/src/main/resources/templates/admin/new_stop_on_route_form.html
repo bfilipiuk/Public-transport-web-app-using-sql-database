@@ -3,51 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Nowy przystanek na linii</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+    <div th:replace="components/head :: head">...</div>
 </head>
-<body>
+<body style="font-family: figtree">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Warszawska Baza Komunikacji Miejskiej</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/index}">Home</a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Main
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
-                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="components/navbar :: navbar-loged">...</div>
 
 <div align="center">
-    <h1>Wybierz przystanek z listy istniejących</h1>
 
+    <h1 class="mt-3">Wybierz przystanek z listy istniejących</h1>
     <br/>
+    <div class="container" style="width: 500px">
     <form action="#" th:action="@{./save_przystanek_na_linii}" th:object="${przystankiNaLinii}" method="post">
-        <select th:name = "idPrzystanku">
-            <option th:each = "przystanek : ${listTypePrzystanek}" th:text="${przystanek.nazwa}" th:value = "${przystanek.idPrzystanku}"></option>
-        </select>
-        <td colspan="2" align="center"><button type="submit">Dodaj</button></td>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text text-white bg-dark" for="inputGroupSelect01" style="width: 150px">Przystanek</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" th:name = "idPrzystanku">
+                <option th:each = "przystanek : ${listTypePrzystanek}" th:text="${przystanek.nazwa}" th:value = "${przystanek.idPrzystanku}"></option>
+            </select>
+        </div>
+        <button class='btn text-white'
+                style="background-color: #CC3533; font-size: 18px"
+                type="submit">Dodaj</button>
     </form>
+    </div>
 </div>
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

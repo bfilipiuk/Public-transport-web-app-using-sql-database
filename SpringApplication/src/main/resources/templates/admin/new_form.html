@@ -4,96 +4,80 @@
     <meta charset="UTF-8">
     <title>Dodaj nowego pracownika</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+    <div th:replace="components/head :: head">...</div>
 </head>
-<body>
+<body style="font-family: figtree">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Warszawska Baza Komunikacji Miejskiej</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/index}">Home</a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Main
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
-                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="components/navbar :: navbar-loged">...</div>
 
 <div align="center">
     <h1>Dodaj nowego pracownika</h1>
 
     <br/>
 
-    <form action="#" th:action="@{/save}" th:object="${pracownik}" method="post">
-        <table border="1" cellpadding="10">
-            <tr>
-                <td>Imie:</td>
-                <td><input type="text" th:field="*{imie}"></td>
-            </tr>
-
-            <tr>
-                <td>Nazwisko:</td>
-                <td><input type="text" th:field="*{nazwisko}"></td>
-            </tr>
-
-            <tr>
-                <td>PESEL:</td>
-                <td><input type="text" th:field="*{pesel}"></td>
-            </tr>
-
-            <tr>
-                <td>Nr telefonu:</td>
-                <td><input type="text" th:field="*{telefon}"></td>
-            </tr>
-
-            <tr>
-                <td>E-mail:</td>
-                <td><input type="text" th:field="*{email}"></td>
-            </tr>
-
-            <tr>
-                <td>Nr konta bankowego:</td>
-                <td><input type="text" th:field="*{numerKontaBankowego}"></td>
-            </tr>
-
-            <tr>
-                <td>Stanowisko:</td>
-                <td><input type="text" th:field="*{stanowisko}"></td>
-            </tr>
-
-            <tr>
-                <td>ID bazy:</td>
-                <td><input type="text" th:field="*{idBazy}"></td>
-            </tr>
-
-            <tr>
-                <td>ID adresu:</td>
-                <td><input type="text" th:field="*{idAdresu}"></td>
-            </tr>
-
-            <tr>
-                <td colspan="2" align="center"><button type="submit">Zapisz</button></td>
-            </tr>
-        </table>
+    <div class="container">
+        <form action="#" th:action="@{/save}" th:object="${pracownik}" method="post">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text text-white bg-dark" style="width: 250px">Imie</span>
+                    </div>
+                    <input class="form-control" type="text" th:field="*{imie}">
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text text-white bg-dark" style="width: 250px">Nazwisko</span>
+                    </div>
+                    <input class="form-control" type="text" th:field="*{nazwisko}">
+                </div><div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text text-white bg-dark" style="width: 250px">Pesel</span>
+                </div>
+                <input class="form-control" type="text" th:field="*{pesel}">
+            </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text text-white bg-dark" style="width: 250px">Telefon</span>
+                    </div>
+                    <input class="form-control" type="text" th:field="*{telefon}">
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text text-white bg-dark" style="width: 250px">E-mail</span>
+                    </div>
+                    <input class="form-control" type="text" th:field="*{email}">
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text text-white bg-dark" style="width: 250px">Nr konta bankowego</span>
+                    </div>
+                    <input class="form-control" type="text" th:field="*{numerKontaBankowego}">
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text text-white bg-dark" style="width: 250px">Stanowisko</span>
+                    </div>
+                    <input class="form-control" type="text" th:field="*{stanowisko}">
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text text-white bg-dark" style="width: 250px">ID Bazy</span>
+                    </div>
+                    <input class="form-control" type="text" th:field="*{idBazy}">
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text text-white bg-dark" style="width: 250px">ID Adresu</span>
+                    </div>
+                    <input class="form-control" type="text" th:field="*{idAdresu}">
+                </div>
+                <button
+                        class='btn text-white'
+                        style="background-color: #CC3533; font-size: 18px"
+                        type="submit"
+                >Zapisz</button>
+            </form>
+        </div>
     </form>
 </div>
 

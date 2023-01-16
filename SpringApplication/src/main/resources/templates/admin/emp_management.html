@@ -3,40 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Zarządzanie pracownikami</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+    <div th:replace="components/head :: head">...</div>
 </head>
-<body>
+<body style="font-family: figtree;">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Warszawska Baza Komunikacji Miejskiej</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/index}">Home</a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Main
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
-                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="components/navbar :: navbar-loged">...</div>
 
 <div class="container">
     <div class="row">
@@ -50,10 +22,15 @@
     </div>
 </div>
 
-<div class="container">
+<div style="margin-left: -200px">
+<div class="container text-nowrap">
     <div class="col-md-10 mt-5">
-        <table border="1" cellpadding="10">
-            <thead>
+        <a href="/new"
+           class="btn text-white mt-1 mb-1"
+           style="background-color: #CC3533; font-size: 18px"
+        >Dodaj nowego pracownika</a>
+        <table class="table">
+            <thead class="thead-dark">
             <tr>
                 <th>ID</th>
                 <th>Imię</th>
@@ -89,11 +66,9 @@
             </tr>
             </tbody>
         </table>
-
-        <a href="/new">Dodaj nowego pracownika</a>
     </div>
 </div>
-
+</div>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

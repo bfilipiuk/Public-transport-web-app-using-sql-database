@@ -3,73 +3,21 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Strona tytułowa</title>
-
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-
+    <div th:replace="components/head :: head">...</div>
 </head>
+<body style="font-family: figtree" >
 
-<!-- <body th:style="'background: url(/assets/img/img.png) no-repeat center center fixed;'"> -->
-
-
-<!--<style th:inline="text">-->
-<!--    body{-->
-<!--        background: url([[@{/assets/img/img.png}]])-->
-<!--        no-repeat center center fixed;-->
-<!--    }-->
-<!--</style>-->
-
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Warszawska Baza Komunikacji Miejskiej</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/main}">Main</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/main}">Login</a></a>
-                </li>
-
-            </ul>
+<div th:replace="components/navbar :: navbar">...</div>
+    <div style="width: 100%">
+        <img th:src="@{/images/wzium2.jpg}" style="width: 100%"/>
+        <div class="container text-center position-absolute text-white" style="top: 250px; left: 50%; transform: translate(-50%, 0)">
+            <label class="text-justify" style="font-size: 42px;">Witaj na stronie Warszawskiej Bazy Komunikacji Miejskiej!</label>
+            <a type="button" class="btn btn-danger" th:href="@{/main}" style="margin-top: 70px; width: 300px; height: 80px; background-color: #CC3533; border-radius: 0; padding-top: 17px; justify-content: center; font-size: 28px">Zaloguj się</a>
         </div>
     </div>
-</nav>
-
-
-<!--Using images in page    -->
-<!-- <img th:src="@{/assets/img/img.png}" alt="Image" class="img-fluid"> -->
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 mt-5">
-
-            <label style="font-size:30px">Witaj na stronie Warszawskiej Bazy Komunikacji Miejskiej!</label>
-            <div style="font-size:20px">Jeśli chcesz się zalogować kliknij <a th:href="@{/main}"><b>tutaj</b></a> albo przejdź do prawego górnego rogu.
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>
