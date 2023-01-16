@@ -13,7 +13,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 mt-5">
-        <label style="font-size:30px" th:inline="text">Główny Panel administracyjny</label>
+        <label style="font-size:30px" th:inline="text">Główny panel administracyjny</label>
     </div>
   </div>
 </div>
@@ -31,10 +31,13 @@
     </div>
 
     <div class="container">
+        <form method="post" th:action="@{/index}">
+
         <button class="btn text-white" type="submit" onclick="successfullyLogout()"
                 style="margin-top: 20px; width: 180px; height: 45px; background-color: #CC3533; font-size: 18px"
                 value="Sign Out">Wyloguj się
         </button>
+        </form>
     </div>
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

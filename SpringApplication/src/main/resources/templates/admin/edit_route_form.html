@@ -10,11 +10,11 @@
 
 <div th:replace="components/navbar :: navbar-loged">...</div>
 
-<div align="center">
+<div align="center" class="pt-4">
     <h1>Edytuj dane linii</h1>
 
     <br/>
-
+    <div class="container">
     <form action="#" th:action="@{/update_route}" th:object="${linia}" method="post">
         <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -45,6 +45,7 @@
                  type="submit"
         >Zapisz</button>
     </form>
+    </div>
 </div>
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

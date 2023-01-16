@@ -15,7 +15,7 @@
     <div class="col-md-10 mt-5">
       <form method="post" th:action="@{/index}">
         <div class="form-group">
-          <label style="font-size:30px" th:inline="text">Gratualcje użytkowniku wygrałeś nowy iphone</label>
+          <label style="font-size:30px" th:inline="text">Wybierz jedną z poniższych opcji</label>
         </div>
 
       </form>
@@ -38,9 +38,11 @@
 
 
 <div class="container">
-<button class="btn text-white" type="submit" onclick="successfullyLogout()"
-        style="margin-top: 20px; width: 180px; height: 45px; background-color: #CC3533; font-size: 18px"
-        value="Sign Out">Wyloguj się</button>
+  <form method="post" th:action="@{/index}">
+    <button class="btn text-white" type="submit" onclick="successfullyLogout()"
+            style="margin-top: 20px; width: 180px; height: 45px; background-color: #CC3533; font-size: 18px"
+            value="Sign Out">Wyloguj się</button>
+  </form>
 </div>
 
 
