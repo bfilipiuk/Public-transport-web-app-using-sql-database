@@ -191,10 +191,6 @@ public class AppController implements WebMvcConfigurer {
 
         @RequestMapping(value="/save_linia", method = RequestMethod.POST)
         public String saveLinia(@RequestParam boolean czyAktywna, @RequestParam char rodzajLinii, @RequestParam int idBazy) {
-            System.out.println(czyAktywna);
-            System.out.println(rodzajLinii);
-            System.out.println(idBazy);
-
             Linia linia = new Linia(czyAktywna, rodzajLinii, idBazy);
 
             daoLinia.saveLinia(linia);

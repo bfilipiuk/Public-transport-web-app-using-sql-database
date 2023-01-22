@@ -28,18 +28,31 @@ public class LiniaDAO {
     public List<Linia> listType(char type) {
         String typeSql = "'" + type + "'";
 
-        String sql = "SELECT * FROM linie WHERE rodzaj_linii = " + typeSql +" AND czy_aktywna = 1";
+        String sql = "SELECT * FROM linie WHERE rodzaj_linii = " + typeSql + " AND czy_aktywna = 1";
         List<Linia> listLiniaType = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Linia.class));
 
         return listLiniaType;
     }
 
     public void saveLinia(Linia linia) {
+
+
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("linie").usingColumns("czy_aktywna, rodzaj_linii, id_bazy");
 
+        System.out.println(linia.toString());
+
+        linia.setRodzajLinii('0');
+
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(linia);
-//        insertActor.execute(param);
+
+        System.out.println(param.getParameterNames()[0]);
+        System.out.println(param.getParameterNames()[1]);
+        System.out.println(param.getParameterNames()[2]);
+
+        System.out.println(param.getValue("czyAktywna"));
+
+        insertActor.execute(param);
     }
 
     public Linia get(int id) {
