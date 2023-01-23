@@ -35,22 +35,12 @@ public class LiniaDAO {
     }
 
     public void saveLinia(Linia linia) {
-
-
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("linie").usingColumns("czy_aktywna, rodzaj_linii, id_bazy");
 
-        System.out.println(linia.toString());
-
-        linia.setRodzajLinii('0');
-
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(linia);
 
-        System.out.println(param.getParameterNames()[0]);
-        System.out.println(param.getParameterNames()[1]);
-        System.out.println(param.getParameterNames()[2]);
-
-        System.out.println(param.getValue("czyAktywna"));
+        System.out.println(param);
 
         insertActor.execute(param);
     }
@@ -64,8 +54,8 @@ public class LiniaDAO {
     }
 
     public void update(Linia linia) {
-        String sql = "UPDATE LINIE SET CZY_AKTYWNA=:czyAktywna, RODZAJ_LINII=:rodzajLinii, ID_BAZY=:idBazy" +
-                " WHERE ID_LINII=:idLinii";
+        String sql = "UPDATE LINIE SET CZY_AKTYWNA=:czy_aktywna, RODZAJ_LINII=:rodzaj_linii, ID_BAZY=:id_bazy" +
+                " WHERE ID_LINII=:id_linii";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(linia);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 

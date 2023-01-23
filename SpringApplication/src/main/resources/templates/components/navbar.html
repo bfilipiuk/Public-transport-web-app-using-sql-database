@@ -59,6 +59,10 @@
                               style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
                   </li>
 
+                  <li class="nav-item" th:action="@{/index}">
+                      <a class="nav-link text-white" th:href="@{/index}" onclick="successfullyLogout()">Wyloguj się</a>
+                  </li>
+
               </ul>
           </div>
       </div>
@@ -78,9 +82,19 @@
                       <a class="nav-link" th:href="@{/index}">Strona główna</a>
                   </li>
 
+                  <li class="nav-item active">
+                      <a class="nav-link" th:href="@{/main_user}">Menu główne
+                          <span class="sr-only">(current)</span>
+                      </a>
+                  </li>
+
                   <li class="nav-item">
                       <a class="nav-link text-white" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
                               style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                  </li>
+
+                  <li class="nav-item" th:action="@{/index}">
+                      <a class="nav-link text-white" th:href="@{/index}" onclick="successfullyLogout()">Wyloguj się</a>
                   </li>
 
               </ul>

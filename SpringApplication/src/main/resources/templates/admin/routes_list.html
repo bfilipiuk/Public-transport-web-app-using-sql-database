@@ -43,15 +43,15 @@
       <tr th:each="linia : ${listLinia}">
 <!--        <td th:text="${linia.idLinii}">ID</td>-->
         <td>
-          <a th:href="@{'/inspect_route/' + ${linia.idLinii}}" th:text="${linia.idLinii}">ID</a>
+          <a th:href="@{'/inspect_route/' + ${linia.id_linii}}" th:text="${linia.id_linii}">ID</a>
         </td>
-        <td th:text="${linia.czyAktywna}">Czy aktywna</td>
-        <td th:text="${linia.rodzajLinii}">Rodzaj linii</td>
-        <td th:text="${linia.idBazy}">ID Bazy</td>
+        <td th:text="${linia.czy_aktywna}">Czy aktywna</td>
+        <td th:text="${linia.rodzaj_linii}">Rodzaj linii</td>
+        <td th:text="${linia.id_bazy}">ID Bazy</td>
         <td>
-          <a th:href="@{'/edit_route/' + ${linia.idLinii}}">Edytuj</a>
+          <a th:href="@{'/edit_route/' + ${linia.id_linii}}">Edytuj</a>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <a th:href="@{'/delete_route/' + ${linia.idLinii}}">Usuń</a>
+          <a th:href="@{'/delete_route/' + ${linia.id_linii}}">Usuń</a>
         </td>
       </tr>
       </tbody>

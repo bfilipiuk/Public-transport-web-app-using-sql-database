@@ -1,7 +1,6 @@
 package bdbt_project.SpringApplication;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -149,7 +147,7 @@ public class AppController implements WebMvcConfigurer {
             List<Przystanek> listPrzystanek = daoPrzystanek.list();
             model.addAttribute("listPrzystanek", listPrzystanek);
 
-            List<Przystanek> listTypePrzystanek = daoPrzystanek.listType(daoLinia.get(id).getRodzajLinii());
+            List<Przystanek> listTypePrzystanek = daoPrzystanek.listType(daoLinia.get(id).getRodzaj_linii());
             model.addAttribute("listTypePrzystanek", listTypePrzystanek);
 
             Linia linia = daoLinia.get(id);
@@ -190,8 +188,7 @@ public class AppController implements WebMvcConfigurer {
         }
 
         @RequestMapping(value="/save_linia", method = RequestMethod.POST)
-        public String saveLinia(@RequestParam boolean czyAktywna, @RequestParam char rodzajLinii, @RequestParam int idBazy) {
-            Linia linia = new Linia(czyAktywna, rodzajLinii, idBazy);
+        public String saveLinia(@ModelAttribute("linia") Linia linia) {
 
             daoLinia.saveLinia(linia);
 

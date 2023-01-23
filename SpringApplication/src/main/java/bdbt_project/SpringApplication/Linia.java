@@ -1,62 +1,62 @@
 package bdbt_project.SpringApplication;
 
 public class Linia {
-    private int idLinii;
+    private int id_linii;
 
-    private boolean czyAktywna;
+    private boolean czy_aktywna;
 
-    private char rodzajLinii;
+    private char rodzaj_linii;
 
-    private int idBazy;
+    private int id_bazy;
 
-    public Linia(boolean czyAktywna, char rodzajLinii, int idBazy) {
-//        this.idLinii = idLinii;
-        this.czyAktywna = czyAktywna;
-        this.rodzajLinii = rodzajLinii;
-        this.idBazy = idBazy;
+    public Linia(boolean czy_aktywna, char rodzaj_linii, int id_bazy, int id_linii) {
+        this.id_linii = id_linii;
+        this.czy_aktywna = czy_aktywna;
+        this.rodzaj_linii = rodzaj_linii;
+        this.id_bazy = id_bazy;
     }
 
     public Linia() {}
 
-    public int getIdLinii() {
-        return idLinii;
+    public int getId_linii() {
+        return id_linii;
     }
 
-    public void setIdLinii(int idLinii) {
-        this.idLinii = idLinii;
+    public void setId_linii(int id_linii) {
+        this.id_linii = id_linii;
     }
 
-    public boolean isCzyAktywna() {
-        return czyAktywna;
+    public boolean getCzy_aktywna() {
+        return czy_aktywna;
     }
 
-    public void setCzyAktywna(boolean czyAktywna) {
-        this.czyAktywna = czyAktywna;
+    public void setCzy_aktywna(boolean czy_aktywna) {
+        this.czy_aktywna = czy_aktywna;
     }
 
-    public char getRodzajLinii() {
-        return rodzajLinii;
+    public char getRodzaj_linii() {
+        return rodzaj_linii;
     }
 
-    public void setRodzajLinii(char rodzajLinii) {
-        this.rodzajLinii = rodzajLinii;
+    public void setRodzaj_linii(char rodzaj_linii) {
+        this.rodzaj_linii = rodzaj_linii;
     }
 
-    public int getIdBazy() {
-        return idBazy;
+    public int getId_bazy() {
+        return id_bazy;
     }
 
-    public void setIdBazy(int idBazy) {
-        this.idBazy = idBazy;
+    public void setId_bazy(int id_bazy) {
+        this.id_bazy = id_bazy;
     }
 
     @Override
     public String toString() {
         return "Linia{" +
-                "idLinii=" + idLinii +
-                ", czyAktywna=" + czyAktywna +
-                ", rodzajLinii=" + rodzajLinii +
-                ", idBazy=" + idBazy +
+                "idLinii=" + id_linii +
+                ", czyAktywna=" + czy_aktywna +
+                ", rodzajLinii=" + rodzaj_linii +
+                ", idBazy=" + id_bazy +
                 '}';
     }
 }
