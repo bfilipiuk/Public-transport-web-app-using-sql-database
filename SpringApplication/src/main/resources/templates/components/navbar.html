@@ -59,8 +59,10 @@
                               style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
                   </li>
 
-                  <li class="nav-item" th:action="@{/index}">
-                      <a class="nav-link text-white" th:href="@{/index}" onclick="successfullyLogout()">Wyloguj się</a>
+                  <li class="nav-item">
+                      <form method="post" th:action="@{/index}">
+                          <a class="nav-link text-white" th:action="@{/index}" th:href="@{/index}" onclick="successfullyLogout()">Wyloguj się</a>
+                      </form>
                   </li>
 
               </ul>
@@ -93,8 +95,10 @@
                               style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
                   </li>
 
-                  <li class="nav-item" th:action="@{/index}">
-                      <a class="nav-link text-white" th:href="@{/index}" onclick="successfullyLogout()">Wyloguj się</a>
+                  <li class="nav-item">
+                      <form method="post" th:action="@{/index}">
+                        <a class="nav-link text-white" th:action="@{/index}" th:href="@{/index}" onclick="successfullyLogout()">Wyloguj się</a>
+                      </form>
                   </li>
 
               </ul>
