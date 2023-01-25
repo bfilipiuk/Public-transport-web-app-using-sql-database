@@ -22,54 +22,54 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text text-white bg-dark" style="width: 250px">Imie</span>
                     </div>
-                    <input class="form-control" type="text" th:field="*{imie}">
+                    <input class="form-control" type="text" th:field="*{imie}" required>
                 </div>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text text-white bg-dark" style="width: 250px">Nazwisko</span>
                     </div>
-                    <input class="form-control" type="text" th:field="*{nazwisko}">
+                    <input class="form-control" type="text" th:field="*{nazwisko}" required>
                 </div><div class="input-group mb-2">
                 <div class="input-group-prepend">
                     <span class="input-group-text text-white bg-dark" style="width: 250px">Pesel</span>
                 </div>
-                <input class="form-control" type="text" th:field="*{pesel}">
+                <input class="form-control" type="text" th:field="*{pesel}" minlength="11" maxlength="11">
             </div>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text text-white bg-dark" style="width: 250px">Telefon</span>
                     </div>
-                    <input class="form-control" type="text" th:field="*{telefon}">
+                    <input class="form-control" type="text" th:field="*{telefon}" minlength="9" maxlength="9" required>
                 </div>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                        <span class="input-group-text text-white bg-dark" style="width: 250px">E-mail</span>
+                        <span class="input-group-text text-white bg-dark" style="width: 250px" >E-mail</span>
                     </div>
-                    <input class="form-control" type="text" th:field="*{email}">
+                    <input class="form-control" type="email" th:field="*{email}" required>
                 </div>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text text-white bg-dark" style="width: 250px">Nr konta bankowego</span>
                     </div>
-                    <input class="form-control" type="text" th:field="*{numerKontaBankowego}">
+                    <input class="form-control" type="text" th:field="*{numerKontaBankowego}" minlength="26" maxlength="26" required>
                 </div>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text text-white bg-dark" style="width: 250px">Stanowisko</span>
                     </div>
-                    <input class="form-control" type="text" th:field="*{stanowisko}">
+                    <input class="form-control" type="text" th:field="*{stanowisko}" required>
                 </div>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text text-white bg-dark" style="width: 250px">ID Bazy</span>
                     </div>
-                    <input class="form-control" type="text" th:field="*{idBazy}">
+                    <input class="form-control" type="text" th:field="*{idBazy}" required>
                 </div>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text text-white bg-dark" style="width: 250px">ID Adresu</span>
                     </div>
-                    <input class="form-control" type="text" th:field="*{idAdresu}">
+                    <input class="form-control" type="text" th:field="*{idAdresu}" required>
                 </div>
                 <button
                         class='btn text-white'

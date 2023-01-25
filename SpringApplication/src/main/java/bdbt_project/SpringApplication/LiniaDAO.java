@@ -34,15 +34,21 @@ public class LiniaDAO {
         return listLiniaType;
     }
 
+//    public void saveLinia(Linia linia) {
+//        SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
+//        insertActor.withTableName("linie").usingColumns("czy_aktywna, rodzaj_linii, id_bazy");
+//
+//        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(linia);
+//
+//        System.out.println(param);
+//
+//        insertActor.execute(param);
+//    }
     public void saveLinia(Linia linia) {
-        SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("linie").usingColumns("czy_aktywna, rodzaj_linii, id_bazy");
-
-        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(linia);
-
-        System.out.println(param);
-
-        insertActor.execute(param);
+        this.jdbcTemplate.update(
+                "INSERT INTO linie (czy_aktywna, rodzaj_linii, id_bazy) VALUES(?, ?, ?)",
+                linia.getCzy_aktywna() ? "1" : "0", String.valueOf(linia.getRodzaj_linii()), linia.getId_bazy()
+        );
     }
 
     public Linia get(int id) {
